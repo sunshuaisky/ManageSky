@@ -1,0 +1,45 @@
+.login_form {
+  width: 320px;
+  padding: 36px;
+  background-color: #fff;
+  box-shadow: 0 0 100px rgba(0, 0, 0, .08);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login_form_forgot {
+  float: right;
+}
+
+.login_form_button {
+  width: 100%;
+}
+
+
+.logo {
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  margin-right: 15px;
+}
+
+.logo span {
+  vertical-align: text-bottom;
+  font-size: 21px;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: 700;
+  color: #1890ff;
+  background-image: -webkit-gradient(linear, 37.219838% 34.532506%, 36.425669% 93.178216%, from(#29cdff), to(#0a60ff), color-stop(.37, #148eff));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

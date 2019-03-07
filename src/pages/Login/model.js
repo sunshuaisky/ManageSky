@@ -1,8 +1,6 @@
 import * as loginService from './service.js';
 import router from 'umi/router';
-import {
-  notification
-} from 'antd';
+import { notification } from 'antd';
 
 notification.config({
   placement: 'bottomRight',
@@ -24,19 +22,12 @@ export default {
     },
   },
   subscriptions: {
-    setup({
-      dispatch,
-      history
-    }) { // eslint-disable-line
+    setup({ dispatch, history }) { // eslint-disable-line
+
     },
   },
   effects: {
-    * login({
-      payload
-    }, {
-      call,
-      put
-    }) {
+    * login({ payload }, { call, put }) {
       try {
         const res = yield call(loginService.login, payload);
         yield put({

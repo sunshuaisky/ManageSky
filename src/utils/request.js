@@ -2,6 +2,7 @@ import fetch from 'dva/fetch';
 import config from 'config';
 
 function checkStatus(response) {
+  console.log(response)
   if (response.status >= 200 && response.status < 300) {
     return response;
   }

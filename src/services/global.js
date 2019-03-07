@@ -1,12 +1,11 @@
 import request from '@/utils/request';
 
-export function login(params) {
-  return request('/api/login', {
-    method: 'POST',
+export function logout() {
+  return request('/api/logout', {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
     },
     credentials: 'include',
-    body: JSON.stringify(params)
   });
 }

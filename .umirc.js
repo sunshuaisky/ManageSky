@@ -25,11 +25,11 @@ export default {
       },
     }],
   ],
-  singular: true,
   alias: {
     components: resolve(__dirname, './src/components'),
     config: resolve(__dirname, './src/utils/config'),
     utils: resolve(__dirname, './src/utils'),
+    services: resolve(__dirname, './src/services'),
   },
   routes: [{
     path: '/login',

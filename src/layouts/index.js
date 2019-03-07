@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { Layout } from 'antd';
 import SideMenu from '../components/Menu';
 import Header from '../components/Header';
@@ -7,17 +7,23 @@ import { connect } from 'dva';
 
 const { Footer, Sider, Content } = Layout;
 
-class BasicLayout extends Component {
+class BasicLayout extends PureComponent {
   render() {
-    console.log(this.props)
+    const { global } = this.props;
+    console.log()
     return (
       <Layout>
-        <Sider width={256} style={{ minHeight: '100vh' }}>
+        <Sider 
+          width={256} 
+          style={{ minHeight: '100vh' }}
+          collapsed={global.collapsed}
+          >
           <div style={{ height: '32px', background: 'rgba(255,255,255,.2)', margin: '16px' }} />
           <SideMenu></SideMenu>
         </Sider>
         <Layout>
-          <Header></Header>
+          <Header
+            {...this.props}></Header>
           <Content style={{ margin: '24px 16px 0' }}>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               {this.props.children}

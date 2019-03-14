@@ -1,6 +1,7 @@
 import * as loginService from './service.js';
 import router from 'umi/router';
 import { notification } from 'antd';
+import localEvent from 'utils/local';
 
 notification.config({
   placement: 'bottomRight',
@@ -21,11 +22,6 @@ export default {
       }
     },
   },
-  subscriptions: {
-    setup({ dispatch, history }) { // eslint-disable-line
-
-    },
-  },
   effects: {
     * login({ payload }, { call, put }) {
       try {
@@ -33,6 +29,7 @@ export default {
         yield put({
           type: 'loading',
         });
+        localEvent.StorageSetter('USER_INFO', res.data);
         router.push('/');
       } catch (e) {
         yield put({

@@ -1,11 +1,13 @@
 import * as globalService from '@/services/global.js';
 import { notification } from 'antd';
 import router from 'umi/router';
+import localEvent from 'utils/local';
 
 export default {
   namespace: 'global',
   state: {
     collapsed: false,
+    userInfo: localEvent.StorageGetter('USER_INFO') || {userName: ''}
   },
   reducers: {
     changeLayoutCollapsed(state) {
@@ -23,7 +25,7 @@ export default {
       put
     }) {
       try {
-        const res = yield call(globalService.logout, payload);
+        yield call(globalService.logout, payload);
         router.push('/login');
       } catch (e) {
         notification.error({
@@ -32,5 +34,17 @@ export default {
         });
       }
     },
-  }
+    * isLogin({
+      payload
+    }, {
+      call,
+      put
+    }) {
+      try {
+        yield call(globalService.isLogin, payload);
+      } catch (e) {
+        console.log(e)
+      }
+    },
+  },
 }

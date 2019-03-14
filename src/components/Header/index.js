@@ -5,11 +5,16 @@ import RightContent from '@/components/RightContent';
 
 class Header extends PureComponent {
 	handleMenuCollapse = () => {
-		const { dispatch } = this.props;
-		dispatch({
+		this.props.dispatch({
 			type: 'global/changeLayoutCollapsed',
 		});
 	};
+
+	componentDidMount (){
+    this.props.dispatch({
+      type: "global/isLogin",
+    })
+	}
 
 	render() {
 		const { global } = this.props;

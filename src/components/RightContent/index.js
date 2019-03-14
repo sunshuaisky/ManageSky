@@ -11,6 +11,7 @@ class RightContent extends PureComponent {
   }
 
   render() {
+    const { global } = this.props;
     const menu = (
       <Menu>
         <Menu.Item>
@@ -31,7 +32,7 @@ class RightContent extends PureComponent {
         <Dropdown overlay={menu}>
           <a className={styles.action} href="#">
             <Avatar className={styles.avatar}>USER</Avatar>
-            sunshuaisky <Icon type="down" />
+            { global.userInfo.userName } <Icon type="down" />
           </a>
         </Dropdown>
       </div>

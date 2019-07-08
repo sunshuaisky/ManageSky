@@ -28,10 +28,10 @@ function checkStatus(response) {
 
   const errortext = codeMessage[response.status] || response.statusText;
   notification.error({
-    message: '请求异常',
+    message: '网络异常！',
     description: errortext,
   });
-  if(response.status === 401){
+  if (response.status === 401) {
     router.push('/login');
   }
   const error = new Error(errortext);

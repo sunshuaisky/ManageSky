@@ -1,8 +1,30 @@
-
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
 body {
   margin: 0;
+}
+
+.ant_advanced_search_form .ant-form-item {
+  display: flex;
+}
+
+.ant_advanced_search_form .ant-form-item-control-wrapper {
+  flex: 1;
+}
+
+.ant-layout-content {
+  position: relative;
+}
+
+.ant-layout-content .list_body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
 }

@@ -1,29 +1,30 @@
 // ref: https://umijs.org/config/
-import {
-  resolve
-} from 'path';
+import { resolve } from 'path';
 
 export default {
   treeShaking: true,
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
-    ['umi-plugin-react', {
-      antd: true,
-      dva: true,
-      dynamicImport: false,
-      title: 'managesky',
-      dll: false,
+    [
+      'umi-plugin-react',
+      {
+        antd: true,
+        dva: true,
+        dynamicImport: false,
+        title: 'managesky',
+        dll: false,
 
-      routes: {
-        exclude: [
-          /models\//,
-          /services\//,
-          /model\.(t|j)sx?$/,
-          /service\.(t|j)sx?$/,
-          /components\//,
-        ],
+        routes: {
+          exclude: [
+            /models\//,
+            /services\//,
+            /model\.(t|j)sx?$/,
+            /service\.(t|j)sx?$/,
+            /components\//,
+          ],
+        },
       },
-    }],
+    ],
   ],
   alias: {
     components: resolve(__dirname, './src/components'),
@@ -31,33 +32,45 @@ export default {
     utils: resolve(__dirname, './src/utils'),
     services: resolve(__dirname, './src/services'),
   },
-  routes: [{
-    path: '/login',
-    component: 'Login'
-  }, {
-    path: '/',
-    component: '../layouts',
-    routes: [{
+  routes: [
+    {
+      path: '/login',
+      component: 'Login',
+    },
+    {
       path: '/',
-      component: 'Card'
-    }, {
-      path: '/Card',
-      component: 'Card'
-    }, {
-      path: '/dashboard',
-      routes: [{
-          path: '/dashboard/analysis',
-          component: 'Dashboard/Analysis'
+      component: '../layouts',
+      routes: [
+        {
+          path: '/',
+          redirect: '/dashboard/analysis',
         },
         {
-          path: '/dashboard/monitor',
-          component: 'Dashboard/Monitor'
+          path: '/dashboard',
+          routes: [
+            {
+              path: '/dashboard/analysis',
+              component: 'Dashboard/Analysis',
+            },
+            {
+              path: '/dashboard/monitor',
+              component: 'Dashboard/Monitor',
+            },
+            {
+              path: '/dashboard/workplace',
+              component: 'Dashboard/Workplace',
+            },
+          ],
         },
         {
-          path: '/dashboard/workplace',
-          component: 'Dashboard/Workplace'
-        }
-      ]
-    }]
-  }]
-}
+          path: '/card',
+          component: 'Card',
+        },
+        {
+          path: '/literature',
+          component: 'Literature',
+        },
+      ],
+    },
+  ],
+};

@@ -10,29 +10,24 @@ const { Footer, Sider, Content } = Layout;
 class BasicLayout extends PureComponent {
   render() {
     const { global } = this.props;
-    console.log()
     return (
       <Layout>
-        <Sider 
-          width={256} 
-          style={{ minHeight: '100vh' }}
-          collapsed={global.collapsed}
-          >
+        <Sider width={256} style={{ minHeight: '100vh' }} collapsed={global.collapsed}>
           <div style={{ height: '32px', background: 'rgba(255,255,255,.2)', margin: '16px' }} />
-          <SideMenu></SideMenu>
+          <SideMenu {...this.props} />
         </Sider>
         <Layout>
-          <Header
-            {...this.props}></Header>
+          <Header {...this.props} />
           <Content style={{ margin: '24px 16px 0' }}>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              {this.props.children}
-            </div>
+            {/* <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+              
+            </div> */}
+            {this.props.children}
           </Content>
           <Footer style={{ textAlign: 'center' }}>{config.copyright}</Footer>
         </Layout>
       </Layout>
-    )
+    );
   }
 }
 

@@ -21,6 +21,9 @@ export default {
     list(state, action) {
       console.log(state);
       console.log(action);
+      action.data.forEach((element, index) => {
+        element.key = index;
+      });
       state.list = action.data;
       return {
         ...state,
@@ -34,7 +37,7 @@ export default {
         console.log(res);
         yield put({
           type: 'list',
-          data: res.data,
+          data: res.data.data,
         });
       } catch (e) {
         notification.error({
